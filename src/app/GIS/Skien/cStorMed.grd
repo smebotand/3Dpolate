@@ -1,0 +1,26 @@
+[general]
+creator=R package 'raster'
+created=2021-04-19 00:40:48
+[georeference]
+nrows=439
+ncols=1743
+xmin=9.580460676
+ymin=59.166623159
+xmax=9.635758811
+ymax=59.180550802
+projection=+proj=longlat +datum=WGS84 +no_defs
+[data]
+datatype=FLT4S
+byteorder=little
+nbands=1
+bandorder=BIL
+categorical=FALSE
+minvalue=2.42000007629395
+maxvalue=2.42000007629395
+nodatavalue=-3.4e+38
+[legend]
+legendtype=
+values=
+color=
+[description]
+layername=cStorMedClip

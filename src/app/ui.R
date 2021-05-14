@@ -1,10 +1,11 @@
 
 
 ui = dashboardPage(
+  title = "3DPolate",
 
 
   dashboardHeader(
-    title = span(img(src = "MiljøData Labdata logo.jpg", height = 40)),
+    title = span(img(src = "MiljoData.png", height = 40)),
     titleWidth = 300,
     #tags$li(class = "dropdown", actionLink("runIntro", "Help", class = "my_class"),icon=icon("question")),
     tags$li(
@@ -108,7 +109,7 @@ ui = dashboardPage(
                                                              "text/comma-separated-values,text/plain",
                                                              ".csv"))),
                        conditionalPanel(condition = "!input.testData",
-                                        radioButtons("sep", "importSep",
+                                        radioButtons("sep", "Separator",
                                                      choices = c(Comma = ",",
                                                                  Semicolon = ";",
                                                                  Tab = "\t"))),
@@ -204,13 +205,14 @@ ui = dashboardPage(
                        br(),
                        h5("About the author: Andreas Botnen Smebye is a senior environmental advisor and scientific programmer at the Norwegian Geotechnical Institute (ngi.no). He is part of the team behind the innovation center earthresQue (https://www.nmbu.no/en/services/centers/earthresque/about) to find new innovative mapping and treatment methods for polluted sites (https://www.ngi.no/Prosjekter/Nye-verktoey-og-metoder-for-risikovurdering-og-tiltak-ved-skytebaner-med-Forsvarsbygg) to enhance sustainable solutions in a circular economy. He is particular interested in how to use digitalization as a tool to implement findings and methodology from R&D into new practice."),
                        br(),
-                       h5("Want to hear more(?), join our meetup presentation: https://www.meetup.com/Oslo-useR-Group/events/277702734/")
+                       h5("Want to hear more(?), join our up-coming meetup presentation: https://www.meetup.com/Oslo-useR-Group/events/277702734/")
                        )
                      )
                    )
       ),
-      div(column(12,em("This Web Page neither Stores or Collects Personal Information"),
-                 align = "center"))
+      div(column(12,em("This Web Page neither Stores nor Collects Personal Information"),
+                 align = "center")),
+      br(),br()
     )
   )
 )

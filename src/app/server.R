@@ -253,7 +253,7 @@ server = function(input, output, session) {
   observeEvent(input$showDeterHelp,{
 
     showModal(modalDialog(
-      div(img(src = "deterHelp.png", height = "500vh"),align = "center"),
+      div(img(src = "deterHelp.png", height = "480vh"),align = "center"),
       title = "Deterministic Interpolation Tips",
       easyClose = TRUE,
       size = "l"
@@ -263,7 +263,7 @@ server = function(input, output, session) {
   observeEvent(input$showKrigHelp,{
 
     showModal(modalDialog(
-      img(src = "krigHelp.png", height = "600vh"),
+      img(src = "krigHelp.png", height = "500vh"),
       title = "Kriging Tips",
       easyClose = TRUE,
       size = "l"

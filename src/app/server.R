@@ -38,7 +38,19 @@ server = function(input, output, session) {
 
     if(is.null(inputDatasetRaw())) return()
 
-    inputDatasetRaw()
+    datatable(inputDatasetRaw(),
+              extensions = "Buttons",
+              options = list(
+                dom = "lfrtiBp",
+                lengthMenu = list(c(5,10,50,-1), c("5","10","50","All")),
+                buttons = list(
+                  c('copy', 'csv', 'excel', 'pdf', 'print')
+                )))%>%
+      formatStyle(
+        "value",
+        target="cell",
+        fontWeight= "bold"
+      )
 
   })
 
@@ -207,8 +219,6 @@ server = function(input, output, session) {
 
   output$rmsePlot = renderPlotly({
 
-     if(!input$showRmsePlot) return()
-
     if(is.null(rmseAll())) return()
 
     rmseAll = rmseAll()
@@ -253,7 +263,7 @@ server = function(input, output, session) {
   observeEvent(input$showDeterHelp,{
 
     showModal(modalDialog(
-      div(img(src = "deterHelp.png", height = "480vh"),align = "center"),
+      div(img(src = "deterHelp.png", height = "500vh"),align = "center"),
       title = "Deterministic Interpolation Tips",
       easyClose = TRUE,
       size = "l"
@@ -263,7 +273,7 @@ server = function(input, output, session) {
   observeEvent(input$showKrigHelp,{
 
     showModal(modalDialog(
-      img(src = "krigHelp.png", height = "500vh"),
+      img(src = "krigHelp.png", height = "600vh"),
       title = "Kriging Tips",
       easyClose = TRUE,
       size = "l"
@@ -299,8 +309,21 @@ server = function(input, output, session) {
   output$tableCvPredictions = renderDataTable({
 
     if(is.null(rmseAll())) return()
+    if(!input$showTableCvPredictions) return()
 
-    cvPredictions()
+    datatable(cvPredictions(),
+              extensions = "Buttons",
+              options = list(
+                dom = "lfrtiBp",
+                lengthMenu = list(c(5,10,50,-1), c("5","10","50","All")),
+                buttons = list(
+                  c('copy', 'csv', 'excel', 'pdf', 'print')
+                )))%>%
+      formatStyle(
+        "Observed Value",
+        target="cell",
+        fontWeight= "bold"
+      )
 
   })
 
@@ -369,7 +392,15 @@ server = function(input, output, session) {
     if(is.null(rmseAll())) return()
     if(!input$resShowTable) return()
 
-    estimates()
+
+    datatable(estimates(),
+              extensions = "Buttons",
+              options = list(
+                dom = "lfrtiBp",
+                lengthMenu = list(c(5,10,50,-1), c("5","10","50","All")),
+                buttons = list(
+                  c('copy', 'csv', 'excel', 'pdf', 'print')
+                )))
 
   })
 
@@ -379,7 +410,7 @@ server = function(input, output, session) {
 
     estimates = estimates()
 
-    values = estimates[,"idw"]
+    values = estimates[,input$resSelData]
 
     plot_ly() %>%
       add_markers(x = estimates$x, y = estimates$y, z = estimates$z,

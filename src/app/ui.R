@@ -8,8 +8,8 @@ ui = dashboardPage(
     title = span(img(src = "MiljoData.png", height = 40)),
     titleWidth = 300,
     #tags$li(class = "dropdown", actionLink("runIntro", "Help", class = "my_class"),icon=icon("question")),
-    tags$li(
-      img(src = "ngiLogo.jpg", height = "50vh"),
+    tags$li(a(href = 'http://www.ngi.no',
+              img(src = "ngiLogo.jpg", height = "50vh")),
       class = "dropdown"
     )
   ),
@@ -72,7 +72,7 @@ ui = dashboardPage(
                    tabBox(
                      width = 12,
                      tabPanel(
-                       title = HTML("Welcome"),
+                       title = h3(strong("Welcome")),
 
                        div(h2(strong("Let's 3DPolate!")),
                            align = "center"),
@@ -94,9 +94,8 @@ ui = dashboardPage(
                    tabBox(
                      width = 12,
                      tabPanel(
-                       title = HTML("Load Data"),
-                       div(h2(strong("Load Some Data to Interpolate In-Between")),
-                           align = "center"),
+                       title = h3(strong("Load Some Data to Interpolate In-Between")),
+                       br(),
 
                        materialSwitch("testData","Use Test Dataset",value = TRUE, status = "success"),
                        hr(),
@@ -125,6 +124,7 @@ ui = dashboardPage(
 
                        hr(),
                        materialSwitch("showRawDataPlot","Show Rawdata Table",value = FALSE, status = "success"),
+                       br(),
                        conditionalPanel(condition = "input.showRawDataPlot",
                                         dataTableOutput("tableRawdata"))
                        #TODO: show histogram of value
@@ -135,13 +135,13 @@ ui = dashboardPage(
                    tabBox(
                      width = 12,
                      tabPanel(
-                       title = h2(strong("Run Different Interpolation Methods!")),
+                       title = h3(strong("Run Different Interpolation Methods!")),
 
 
                        div(h4(strong("Deterministic Interpolation"))),
                        div(h5(em("Deterministic Methods include Baseline (i.e. average concentration), Nearest Neighbour (NN) and Inverse Distance Weighting (IDW))"))),
-                       fixedRow(column(3, sliderInput("idwNoN","Number of neighbours (IDW)", min = 2, max = 10, value = c(2,10),step=1)),
-                                column(3, sliderInput("idwEF","Elevation Factor (anisotropy; IDW and NN)", min = 1, max = 10, value = c(2,10),step=1)),
+                       fixedRow(column(3, sliderInput("idwNoN","Number of neighbours (IDW)", min = 2, max = 100, value = c(2,10),step=1)),
+                                column(3, sliderInput("idwEF","Elevation Factor (anisotropy; IDW and NN)", min = -100, max = 100, value = c(2,10),step=2)),
                                 column(3, numericInput("idwPower","Power Parameter (IDW)",value =2))),
                        fixedRow(#column(3, div(actionButton("deterRun","Run Deterministic Interpolation!"),style="margin-left: 15px;")),
                                 column(3, div(actionButton("showDeterHelp","Parameter Tips!"),style="margin-left: 15px;"))),
@@ -161,27 +161,30 @@ ui = dashboardPage(
                        fixedRow(column(3, div(actionButton("interRun","Run Interpolations!"),style="margin-left: 15px;"))),
                                 hr(),
 
-                       fixedRow(column(6, div(em("Show Comparison of Model Errors"),materialSwitch("showRmsePlot",NULL, TRUE,status = "success")))),
-                       #column(6, div(em("Hide Results"), materialSwitch("hideResKrig",NULL, FALSE,status = "success"))),
 
                        withSpinner(
                          plotlyOutput("rmsePlot"),
                          type = 4,
                          color = "#d33724",
                          size = 0.7
-                       )
+                       ),
+                       hr(),
+                       fixedRow(column(6, div(em("Show Table of Model Errors"),materialSwitch("showTableCvPredictions",NULL, FALSE,status = "success")))),
+                       #column(6, div(em("Hide Results"), materialSwitch("hideResKrig",NULL, FALSE,status = "success"))),
+
+                       dataTableOutput("tableCvPredictions")
 
                      )))),
       fluidRow(div(id = "viewResPanel",
                    tabBox(
                      width = 12,
                      tabPanel(
-                       title = h2(strong("View Results")),
-                       div(h5(em("To visualize the 3D Interpolation Values have been Assigned to a 3D Grid Covering the Area of Interest"))),
+
+                       title = h3(strong("View Results")),
+                       br(),
                        selectInput("resSelData","Dataset to Plot",list("Baseline" = "baseline","Nearest Neighbour" = "nn",
                                                                        "Inverse Distance Weigthing" = "idw", "Kriging" = "krig")),
-                       materialSwitch("resShowHist","Show Histograms of Estimates",value = FALSE, status = "success"),
-                       materialSwitch("resShowTable","Show Table of Estimates",value = FALSE, status = "success"),
+                       div(h5(em("To visualize the 3D Interpolation Values have been Assigned to a 3D Grid Covering the Area of Interest (range of input data)"))),
                        hr(),
                        withSpinner(
                          plotlyOutput("resPlot3d"),
@@ -190,9 +193,15 @@ ui = dashboardPage(
                          size = 0.7
                        ),
                        div(h5(em("Please select Method to Visualize Above"))),
+                        hr(),
+                       materialSwitch("resShowTable","Show Table of Estimates",value = FALSE, status = "success"),
+                       dataTableOutput("resTable"),
+                       hr(),
+                       materialSwitch("resShowHist","Show Histograms of Estimates",value = FALSE, status = "success"),
+
                        plotlyOutput("resPlotHist"),
-                       div(h5(em("Please Double Click Legend to Select One Method at a time"))),
-                       dataTableOutput("resTable")
+                       div(h5(em("Please Double Click Legend to Select One Method at a time")))
+
                      )
                    )
       )),
@@ -200,18 +209,21 @@ ui = dashboardPage(
                    tabBox(
                      width = 12,
                      tabPanel(
-                       title = h2(strong("About us")),
+                       title = h3(strong("About us")),
+                       br(),
                        h5("NGI is an independent international centre for research and consulting in engineering geosciences. We are Norway's leading geotechnical specialist community and work in the areas of Building, construction, and transportation, Environmental engineering, Offshore energy and Natural hazards. Our knowledge on sustainable solutions and technology is important to ensure that we build our society on safe ground."),
                        br(),
                        h5("About the author: Andreas Botnen Smebye is a senior environmental advisor and scientific programmer at the Norwegian Geotechnical Institute (ngi.no). He is part of the team behind the innovation center earthresQue (https://www.nmbu.no/en/services/centers/earthresque/about) to find new innovative mapping and treatment methods for polluted sites (https://www.ngi.no/Prosjekter/Nye-verktoey-og-metoder-for-risikovurdering-og-tiltak-ved-skytebaner-med-Forsvarsbygg) to enhance sustainable solutions in a circular economy. He is particular interested in how to use digitalization as a tool to implement findings and methodology from R&D into new practice."),
                        br(),
-                       h5("Want to hear more(?), join our up-coming meetup presentation: https://www.meetup.com/Oslo-useR-Group/events/277702734/")
+                       h5("Want to learn more(?), join our up-coming meetup presentation: https://www.meetup.com/Oslo-useR-Group/events/277702734/")
                        )
                      )
                    )
       ),
-      div(column(12,em("This Web Page neither Stores nor Collects Personal Information"),
+      div(column(12,em("NGI is not liable for any damages arising in contract, tort or otherwise from the use of or inability to use this site or any material contained in it, or from any action or decision taken as a result of using the site. This Web Page neither Stores nor Collects Personal Information"),
                  align = "center")),
+
+
       br(),br()
     )
   )

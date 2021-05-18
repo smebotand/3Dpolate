@@ -8,8 +8,8 @@ ui = dashboardPage(
     title = span(img(src = "MiljoData.png", height = 40)),
     titleWidth = 300,
     #tags$li(class = "dropdown", actionLink("runIntro", "Help", class = "my_class"),icon=icon("question")),
-    tags$li(a(href = 'http://www.ngi.no',
-              img(src = "ngiLogo.jpg", height = "50vh")),
+    tags$li(
+              img(src = "ngiLogo.jpg", height = "50vh"),
       class = "dropdown"
     )
   ),

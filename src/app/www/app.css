@@ -1,25 +1,19 @@
-.small-box {
-  border-radius: 1vh !important;
-  box-shadow: 0.3vh 0.3vh 0vh #CCCCCC;
+.main-header {
+  max-height: 50px;
 }
 
-.introjs-helperNumberLayer {
-  left: 0px;
-  right: 0px;
-}
 
 .nav-tabs-custom .nav-tabs li.active {
   border-top-color: #AE2025;
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .shiny-output-error-validation {
-      color: #AE2025;
-      font-weight: bold;
-      font-size: 15px;
-      min-height: 15px;
+  color: #AE2025;
+  font-weight: bold;
+  font-size: 15px;
+  min-height: 15px;
 }
-
 
 .shiny-input-container input[type=file] {
   overflow: hidden;
@@ -38,14 +32,58 @@
   width: 100%;
   top: 0px;
   /* The default height is only 1px which is find to be TINY */
-  height: 8px;
+    height: 8px;
   margin: 0px;
 }
 
 .progress-bar {
   color:#AE2025;
-  opacity:  0.8;
+    opacity:  0.8;
   transition-duration: 250ms;
+}
+
+
+/* logo */
+
+.logo {
+    padding: 0 0px;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #464646;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color: #464646;
+}
+
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+/* main sidebar */
+
+  .skin-blue .main-sidebar {
+    background-color: #464646;
+      margin: 0PX;
+  }
+
+  .sidebar-menu li { margin: 10px; }
+
+
+/* navbar (rest of the header) */
+  .skin-blue .main-header .navbar {
+    background-color: #464646;
+    max-height: 50px;
+  }
+
+
+.sidebar-title {
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
 }
 
 .shiny-progress .progress-text {
@@ -54,228 +92,114 @@
   height: 30px;
   width: 490px;
   background-color: #D9534F;
-  padding-top: 2px;
+    padding-top: 2px;
   padding-right: 3px;
   padding-bottom: 2px;
   padding-left: 3px;
   opacity: 0.95;
   /* I also wanted to round off the corners of the text box */
-  border-radius: 10px;
+    border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
 }
 
 .progress-text {
   /* Copy the below to vertically center the progress bar text box in the shiny dashboard header */
-  /* !important is crucial here otherwise it gets overridden by the dreaded element.style */
-  top: 15px !important;
+    /* !important is crucial here otherwise it gets overridden by the dreaded element.style */
+    top: 15px !important;
   color: black !important;
   text-align: center;
 }
 
 /* Bold Initial part of message */
-.shiny-progress .progress-text .progress-message {
-  padding-top: 0px;
-  padding-right: 3px;
-  padding-bottom: 3px;
-  padding-left: 10px;
-  font-weight: bold;
-}
+  .shiny-progress .progress-text .progress-message {
+    padding-top: 0px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    font-weight: bold;
+  }
 
 /* Message detail */
-.shiny-progress .progress-text .progress-detail {
-  padding-top: 0px;
-  padding-right: 3px;
-  padding-bottom: 3px;
-  padding-left: 10px;
-  font-weight: bold;  
-}
+  .shiny-progress .progress-text .progress-detail {
+    padding-top: 0px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    font-weight: bold;
+  }
 .shiny-input-container > label {margin-bottom: 0px;}
 
 .dt-buttons {
-    margin: 10px;
-    border-radius: 4px;
-}
-
-#tableOverview {
-  min-height: 40px;
-}
-#tableQcRawdataOutput {
-  min-height: 40px;
-}
-#tableQcMetadataOutput {
-  min-height: 40px;
-}
-#tableGisVsLabdataOutput {
-  min-height: 40px;
-}
-
-
-#selectPrettifyLabdataSampleId:after, #selectPrettifyLabdataSampleId:before {
-  background-color: #464646;
-}
-
-.sidebar-menu li { margin: 10px; }
-
-        /* logo */
-        .skin-blue .main-header .logo {
-        background-color: #464646;
-        }
-        
-        /* logo when hovered */
-        .skin-blue .main-header .logo:hover {
-        background-color: #464646;
-        }
-        
-        /* navbar (rest of the header) */
-        .skin-blue .main-header .navbar {
-        background-color: #464646;
-        }
-
-        .form-group {
-        margin-bottom: 0 !important;
-        }
-
-        /* main sidebar */
-        .skin-blue .main-sidebar {
-                              background-color: #464646;
-                              margin:0PX;
-                              }
-                       
-                       
-                       .sidebar-title {
-    margin: 10px;
-    text-align: center;
-    font-weight: bold;
-    color: white;
+  margin: 10px;
+  border-radius: 4px;
 }
 
 .btn {
-    background: #727477;
+  background: #727477;
     color: white;
-    border-radius: 10px;
+  border-radius: 10px;
 }
-  
+
 .btn-success, .btn-success:active, .btn-success:focus,.btn-success.focus {
-    font-size: 15px;
-    font-family: inherit;
-    padding: 5px 12px;
-    height: 35px;
-    min-width: 90%;
-    margin: 0px 10px 14px 20px;
-    text-align: left;
-    color: white;
-    background: #727477;
+  font-size: 15px;
+  font-family: inherit;
+  padding: 5px 12px;
+  height: 35px;
+  min-width: 90%;
+  margin: 0px 10px 14px 20px;
+  text-align: left;
+  color: white;
+  background: #727477;
     text-indent: 4px;
-    vertical-align: middle;
-    border-color: transparent;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 1px 5px 0 rgba(0,0,0,0.15);
-    text-transform: uppercase;
-    -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+  vertical-align: middle;
+  border-color: transparent;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 1px 5px 0 rgba(0,0,0,0.15);
+  text-transform: uppercase;
+  -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .btn-success:hover {
-    background-color:#AE2025;
+  background-color:#AE2025;
     font-size: 15px;
-    min-width: 90%;
-    font-family: inherit;
-    padding: 5px 12px;
-    height: 35px;
-    margin: 0px 10px 14px 20px;
-    text-align: left;
-    color: white;
-    text-indent: 4px;
-    vertical-align: middle;
-    border-color: transparent;
-    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
-    -webkit-transition: box-shadow 0.4s ease-out;
-    transition: box-shadow 0.4s ease-out;
+  min-width: 90%;
+  font-family: inherit;
+  padding: 5px 12px;
+  height: 35px;
+  margin: 0px 10px 14px 20px;
+  text-align: left;
+  color: white;
+  text-indent: 4px;
+  vertical-align: middle;
+  border-color: transparent;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+  -webkit-transition: box-shadow 0.4s ease-out;
+  transition: box-shadow 0.4s ease-out;
 }
 .btn-warning, .btn-warning:checked, .btn-warning:hover, .btn-warning:active, .btn-warning:focus,.btn-warning.focus {
-    font-size: 15px;
-    min-width: 90%;
-    font-family: inherit;
-    padding: 5px 12px;
-    height: 35px;
-    margin: 0px 10px 14px 20px;
-    text-align: left;
-    color: white;
-    background: #AE2025;
+  font-size: 15px;
+  min-width: 90%;
+  font-family: inherit;
+  padding: 5px 12px;
+  height: 35px;
+  margin: 0px 10px 14px 20px;
+  text-align: left;
+  color: white;
+  background: #AE2025;
     text-indent: 4px;
-    vertical-align: middle;
-    border-color: transparent;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 1px 5px 0 rgba(0,0,0,0.15);
-    text-transform: uppercase;
-    -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+  vertical-align: middle;
+  border-color: transparent;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 1px 5px 0 rgba(0,0,0,0.15);
+  text-transform: uppercase;
+  -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
-/*
 
-.skin-blue .main-sidebar {
-  background-color: #464646;
-  margin: 0PX;
-}
-
-.sidebar-title {
-  margin: 10px;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-}
-
-.nav-tabs-custom .nav-tabs li.active {
-  border-top-color: #AE2025;
-  font-weight: bold;
-}
-
-.sidebar-menu li {
-  margin: 10px;
-}
-
-/* logo */
-
-.logo {
-  padding: 0 0px; 
-}
-
-.skin-blue .main-header .logo {
-  background-color: #464646;
-}
-
-/* logo when hovered */
-
-.skin-blue .main-header .logo:hover {
-  background-color: #464646;
-}
-
-/* navbar (rest of the header) */
-
-.skin-blue .main-header .navbar {
-  background-color: #464646;
-}
-
-.form-group {
-  margin-bottom: 0 !important;
-}
-
-/* main sidebar */
-
-.skin-blue .main-sidebar {
-  background-color: #464646;
-  margin: 0PX;
-}
-
-.sidebar-title {
-  margin: 10px;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-}
 
 .btn-selected, .btn-selected:active {
   width: 90%;
@@ -288,7 +212,7 @@
   text-align: left;
   color: white;
   background: #AE2025;
-  text-indent: 4px;
+    text-indent: 4px;
   vertical-align: middle;
   border-color: transparent;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 1px 5px 0 rgba(0, 0, 0, 0.15);
@@ -301,7 +225,7 @@
 
 .btn-selected:hover {
   background-color: #B94139;
-  font-size: 15px;
+    font-size: 15px;
   font-family: inherit;
   padding: 5px 12px;
   height: 35px;
@@ -328,7 +252,7 @@
   text-align: left;
   color: white;
   background: #EC7F6C;
-  text-indent: 4px;
+    text-indent: 4px;
   vertical-align: middle;
   border-color: transparent;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 1px 5px 0 rgba(0, 0, 0, 0.15);
@@ -345,23 +269,23 @@
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
+  @media screen and (max-width: 800px) {
+    .column {
+      -ms-flex: 50%;
+      flex: 50%;
+      max-width: 50%;
+    }
   }
-}
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
+  @media screen and (max-width: 600px) {
+    .column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
   }
-}
 
 /*
 

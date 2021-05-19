@@ -28,13 +28,16 @@ library(purrr)
 library(dplyr)
 library(magrittr)
 library(xlsx)
+library(tidyverse)
 
 #options(shiny.error = browser)#type e to see failed code
-options(shiny.error = NULL)#type e to see failed code
+#options(shiny.error = NULL)#type e to see failed code
+
+options(encoding="UTF-8")
 
 interpolate = use("modules/interpolate.R")
 
-intro <- read.csv2("intro.csv")
+#intro <- read.csv2("intro.csv")
 
 data(meuse)
 testData = meuse %>%

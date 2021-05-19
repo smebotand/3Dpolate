@@ -1,13 +1,10 @@
 
-
 ui = dashboardPage(
   title = "3DPolate",
-
 
   dashboardHeader(
     title = span(img(src = "MiljoData.png", height = 40)),
     titleWidth = 300,
-    #tags$li(class = "dropdown", actionLink("runIntro", "Help", class = "my_class"),icon=icon("question")),
     tags$li(
               img(src = "ngiLogo.jpg", height = "50vh"),
       class = "dropdown"
@@ -16,37 +13,30 @@ ui = dashboardPage(
 
   dashboardSidebar(
     width = 300,
-    introBox(data.step = 10,data.intro = intro$text[10],
-             data.position = c("bottom-right-aligned"),#  intro tour
              div(class = "inlay", style = "height:15px;width:100%;background-color: #ecf0f5"),
              br(),
              h5(em("Navigation"), style = "margin:10px;"),
-             #introBox(data.step = 1, data.intro = intro$text[1], # intro tour
              bsButton("introBut",
                       label = "WELCOME",
                       icon = icon("tasks"),
-                      style="success"),#),
-             #introBox( data.step = 7, data.intro = intro$text[7],
+                      style="success"),
              bsButton("loadDataBut",
                       label = " LOAD DATA",
                       icon = icon("flask", class = "flask-box"),
-                      style="success"),#),
-             #introBox( data.step = 9, data.intro = intro$text[9],
+                      style="success"),
              bsButton("runInterBut",
                       label = " RUN INTERPOLATION",
                       icon = icon("chart-line"),
-                      style="success"),#),
-             #introBox( data.step = 9, data.intro = intro$text[9],
+                      style="success"),
              bsButton("viewResBut",
                       label = " VIEW RESULTS",
                       icon = icon("chart-line"),
-                      style="success"),#),
-             #introBox( data.step = 9, data.intro = intro$text[9],
+                      style="success"),
              bsButton("aboutUsBut",
                       label = " ABOUT US",
                       icon = icon("chart-line"),
-                      style="success")#)
-    )),
+                      style="success")
+  ),
 
   dashboardBody(
 
@@ -143,16 +133,14 @@ ui = dashboardPage(
                        fixedRow(column(3, sliderInput("idwNoN","Number of neighbours (IDW)", min = 2, max = 100, value = c(2,10),step=1)),
                                 column(3, sliderInput("idwEF","Elevation Factor (anisotropy; IDW and NN)", min = -100, max = 100, value = c(2,10),step=2)),
                                 column(3, numericInput("idwPower","Power Parameter (IDW)",value =2))),
-                       fixedRow(#column(3, div(actionButton("deterRun","Run Deterministic Interpolation!"),style="margin-left: 15px;")),
-                                column(3, div(actionButton("showDeterHelp","Parameter Tips!"),style="margin-left: 15px;"))),
+                       fixedRow(column(3, div(actionButton("showDeterHelp","Parameter Tips!"),style="margin-left: 15px;"))),
                        hr(),
                        div(h4(strong("Ordinary Kriging"))),
                        fixedRow(column(3, numericInput("krigPsill","Partial Sill", 158000)),
                                 column(3, numericInput("krigRange","Range", 500)),
                                 column(3, numericInput("krigNug","Nugget",10000)),
                                 column(3, selectInput("krigModel","Choose Model",list("Spherical" = "Sph","Gausian" = "Gau","Exponential" = "Exp")))),
-                       fixedRow(#column(3, div(actionButton("krigRun","Run Ordinary Kriging!"),style="margin-left: 15px;")),
-                                column(3, div(actionButton("showVar","Show Variogram"),style="margin-left: 15px;")),
+                       fixedRow(column(3, div(actionButton("showVar","Show Variogram"),style="margin-left: 15px;")),
                                 column(3, div(actionButton("showKrigHelp","Parameter Tips!"),style="margin-left: 15px;"))),
                        hr(),
                        div(h4(strong("Overall Parameters"))),
@@ -160,7 +148,6 @@ ui = dashboardPage(
                        br(),
                        fixedRow(column(3, div(actionButton("interRun","Run Interpolations!"),style="margin-left: 15px;"))),
                                 hr(),
-
 
                        withSpinner(
                          plotlyOutput("rmsePlot"),
@@ -170,8 +157,6 @@ ui = dashboardPage(
                        ),
                        hr(),
                        fixedRow(column(6, div(em("Show Table of Model Errors"),materialSwitch("showTableCvPredictions",NULL, FALSE,status = "success")))),
-                       #column(6, div(em("Hide Results"), materialSwitch("hideResKrig",NULL, FALSE,status = "success"))),
-
                        dataTableOutput("tableCvPredictions")
 
                      )))),
@@ -222,8 +207,6 @@ ui = dashboardPage(
       ),
       div(column(12,em("NGI is not liable for any damages arising in contract, tort or otherwise from the use of or inability to use this site or any material contained in it, or from any action or decision taken as a result of using the site. This Web Page neither Stores nor Collects Personal Information"),
                  align = "center")),
-
-
       br(),br()
     )
   )

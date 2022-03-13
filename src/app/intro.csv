@@ -1,2 +1,15 @@
 step;text
-1;TEST
+1;Here in the <b>Navigation Sidebar</b> you can easily shift between different pages as your Analysis Progress! Let's get started with some demo data!
+2;Push the <b>LOAD DATA</b> button to review our Rawdata!
+3;By Deafult the demo data from the <b>{gstat}</b> package is allready loaded for you!
+4;Here you can <b>review a 3D plot</b> of the zinc polluted flood plain alonge the Meuse river. Hmm... up to 1 800 mg/kg, not exactly candy... 
+5;Bear in mind you can upload <b>Any Dataset of Your Own</b> as well!
+6;Now that we have some data load, Let's get the analysis running! Push <b>RUN INTERPOLATION</b>
+7;First we need to set the <b>Parameters to Run Deterministic</b> methods such as IDW and NN!
+8;Feel a little lost? There's help to get! Push the <b>Parameter Tips</b>
+9;Then define your paramters for your <b>Kriging</b> and/or review your <b>Variogram</b>
+10;Push <b>Run Interpolations!</b> to produce some data!
+11;The <b>Residual Error</b> for each method is plotted for you to compare the performance! Looks like <b>Kriging wins this round!</b>
+12;Go to <b>VIEW RESULTS</b> to look at the actual output!
+13;Choose the <b>Method</b> to view data for and...
+14;<b>...TADA! Interpolated values for your dataset are shown in a 3D plot!</b>

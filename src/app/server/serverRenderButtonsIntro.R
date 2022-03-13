@@ -2,12 +2,12 @@
 # INTRO and TOUR ----------------------------------------------------
 
 # #run intro modal
-observeEvent(c("",input$runIntro), {
+observeEvent(c("", input$runIntro), {
   showModal(modalDialog(
     includeHTML("intro_text.html"),
     easyClose = TRUE,
     footer = tagList(
-      #actionButton(inputId = "intro", label = "Introduction Tour", icon = icon("info-circle")),
+      actionButton(inputId = "intro", label = "Introduction Tour", icon = icon("info-circle")),
       actionButton(inputId = "closeIntro", label = "Close")
     )
   ))
@@ -16,17 +16,17 @@ observeEvent(c("",input$runIntro), {
 observeEvent(c(input$intro,
                input$closeIntro),{
 
-                 if(is.null(input$closeIntro)) return()
-                 if(input$closeIntro==0) return()
+                 if(input$intro > 0) return(removeModal())
+                 if(input$closeIntro == 0) return()
                  removeModal()
                })
 
-# # show intro tour
-# observeEvent(input$intro,
-#              introjs(session, options = list("nextLabel" = "Continue",
-#                                              "prevLabel" = "Previous",
-#                                              "doneLabel" = "Alright. Let's go!"))
-# )
+# run intro tour
+observeEvent(input$intro,
+             introjs(session, options = list("nextLabel" = "Continue",
+                                             "prevLabel" = "Previous",
+                                             "doneLabel" = "Explore on Your Own!"))
+)
 
 # DYNAMIC RENDER RULES ----------------------------------------------------
 

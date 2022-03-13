@@ -37,7 +37,7 @@ options(encoding="UTF-8")
 
 interpolate = use("modules/interpolate.R")
 
-#intro <- read.csv2("intro.csv")
+intro <- read.csv2("intro.csv")
 
 data(meuse)
 testData = meuse %>%

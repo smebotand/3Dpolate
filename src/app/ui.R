@@ -6,15 +6,16 @@ ui = dashboardPage(
     title = span(img(src = "EnviData.PNG", height = 40)),
     titleWidth = 300,
     tags$li(
+      actionLink("runIntro", "Help"),
+      class = "dropdown"
+    ),
+    tags$li(
       img(src = "ngiLogo.jpg", height = "50vh"),
       class = "dropdown"
     )
   ),
   
-  
-  
   dashboardSidebar(
-    
     width = 300,
     div(class = "inlay", style = "height:15px;width:100%;background-color: #ecf0f5"),
     br(),

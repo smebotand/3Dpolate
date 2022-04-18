@@ -101,7 +101,7 @@ ui = dashboardPage(
                                            materialSwitch("testData","Use Test Dataset",value = TRUE, status = "success")),
                                  hr(),
                                  conditionalPanel(condition = "input.testData",
-                                                  div(h5(em("The Test Dataset is the Meuse pollution dataset (using zonc values) from the gstat package")))
+                                                  div(h5(em("The Test Dataset is the Meuse pollution dataset (using Zinc Values) from the {gstat} package")))
                                  ),
                                  conditionalPanel(condition = "!input.testData",
                                                   tagList(fileInput("file1", "Choose CSV File",
@@ -139,14 +139,14 @@ ui = dashboardPage(
                        title = h3(strong("Run Different Interpolation Methods!")),
                        
                        introBox(data.step = 7, data.intro = intro$text[7],
-                                 div(h4(strong("Deterministic Interpolation"))),
-                                 div(h5(em("Deterministic Methods include Baseline (i.e. average concentration), Nearest Neighbour (NN) and Inverse Distance Weighting (IDW))"))),
-                                 fixedRow(column(3, sliderInput("idwNoN","Number of neighbours (IDW)", min = 2, max = 100, value = c(2,10),step=1)),
-                                          column(3, sliderInput("idwEF","Elevation Factor (anisotropy; IDW and NN)", min = -100, max = 100, value = c(2,10),step=2)),
-                                          column(3, numericInput("idwPower","Power Parameter (IDW)",value =2))),
-                                 introBox( data.step = 8, data.intro = intro$text[8],
-                                           fixedRow(column(3, div(actionButton("showDeterHelp","Parameter Tips!"),style="margin-left: 15px;")))
-                                 )
+                                div(h4(strong("Deterministic Interpolation"))),
+                                div(h5(em("Deterministic Methods include Baseline (i.e. average concentration), Nearest Neighbour (NN) and Inverse Distance Weighting (IDW))"))),
+                                fixedRow(column(3, sliderInput("idwNoN","Number of neighbours (IDW)", min = 2, max = 100, value = c(2,10),step=1)),
+                                         column(3, sliderInput("idwEF","Elevation Factor (anisotropy; IDW and NN)", min = -100, max = 100, value = c(2,10),step=2)),
+                                         column(3, numericInput("idwPower","Power Parameter (IDW)",value =2))),
+                                introBox( data.step = 8, data.intro = intro$text[8],
+                                          fixedRow(column(3, div(actionButton("showDeterHelp","Parameter Tips!"),style="margin-left: 15px;")))
+                                )
                        ),
                        hr(),
                        introBox( data.step = 9, data.intro = intro$text[9],
@@ -219,19 +219,104 @@ ui = dashboardPage(
                      width = 12,
                      tabPanel(
                        title = h3(strong("About us")),
-                       br(),
-                       h5("NGI is an independent international centre for research and consulting in engineering geosciences. We are Norway's leading geotechnical specialist community and work in the areas of Building, construction, and transportation, Environmental engineering, Offshore energy and Natural hazards. Our knowledge on sustainable solutions and technology is important to ensure that we build our society on safe ground."),
-                       br(),
-                       h5("About the author: Andreas Botnen Smebye is a senior environmental advisor and scientific programmer at the Norwegian Geotechnical Institute (ngi.no). He is part of the team behind the innovation center earthresQue (https://www.nmbu.no/en/services/centers/earthresque/about) to find new innovative mapping and treatment methods for polluted sites (https://www.ngi.no/Prosjekter/Nye-verktoey-og-metoder-for-risikovurdering-og-tiltak-ved-skytebaner-med-Forsvarsbygg) to enhance sustainable solutions in a circular economy. He is particular interested in how to use digitalization as a tool to implement findings and methodology from R&D into new practice."),
-                       br(),
-                       h5("Want to learn more(?), join our up-coming meetup presentation: https://www.meetup.com/Oslo-useR-Group/events/277702734/")
+                       div(
+                         img(src = "ngiBigLogo.png", height = 90),
+                         
+                         h5(tags$span(
+                           tags$strong("3DPolate was Financed by ", tags$a(href = "https://www.ngi.no/", "NGI")),
+                           tags$br(), tags$br(),
+                           tags$em(tags$strong(" an Independent International Centre for Research and Consulting within the Engineering Geosciences.")), 
+                           tags$br(), tags$br(),
+                           "We are Norway's leading Geotechnical Specialist Community and work in the areas of Building, Construction, and Transportation, Environmental Engineering, Offshore energy and Natural hazards.",
+                           tags$br(),
+                           "Our knowledge on Sustainable Solutions and Technology is important to ensure that we", 
+                           tags$strong("Build our Society on Safe Ground."),
+                           tags$br(), tags$br(), tags$br(),
+                           
+                           tags$strong(tags$em("How We Use {Shiny} Apps")), 
+                           tags$br(), tags$br(),
+                           "We use Shiny Apps both for R&D portals to interact with our External Partners, but also to support Internal Everyday Needs.",
+                           tags$br(),
+                           "We take pride in Keeping our Apps Up-and-Running at all times, properly tested before deployment, supplied with only Quality Assured functionality and Fast and Snappy!",
+                           tags$br(),
+                           "To achieve this we run our Apps in Docker containers in Kubernetes hosted by Azure, making it easy to scale-up and integrate with ArcGIS Services and Our Python Back-End.",
+                           tags$br(),
+                           "We Monitor all Services with Grafana Dashboards and Handle our Errors with Sentry",
+                           tags$br(),
+                           "We Mostly use e-mail to Receive Our Raw Data, just because that's what Our Partners curently can Offer.",
+                           tags$br(), tags$br(),
+                           img(src = "services.png", height = 300),
+                           tags$br(), tags$br(), tags$br(),
+                           
+                           tags$strong(tags$em("Packages we Love and Have Used in this App:")),
+                           tags$br(), tags$br(),
+                           tags$a(href = "https://github.com/rstudio/shiny", "{shiny}, No Explanation Needed, Keep Up the Good Work Rstudio!"),
+                           tags$br(),
+                           tags$a(href = "https://github.com/r-spatial/gstat", "{gstat}, a brilliant geostatistical package!"),
+                           tags$br(),
+                           tags$a(href = "https://github.com/carlganz/rintrojs", "{rintrojs}, Allowing you to Create Those Nice and Intuitive Tutorials!"),
+                           tags$br(),
+                           tags$a(href = "https://github.com/plotly/plotly.R", "{plotly}, Either You Just Need a Single bar or Some 3D plots, Plotly does the Job!"),
+                           tags$br(),
+                           tags$a(href = "https://github.com/ceefluz/radar", 
+                                  tags$span("We had a Looked and Borrowed from the \"RadaR\" app, Developed by",
+                                            tags$a(href = "https://github.com/ceefluz", "Christian Luz, Thanks for Sharing!"))),
+                           tags$br(), tags$br(),
+                           
+                           tags$strong(tags$em("Want to Join our Team(!?)")),
+                           tags$br(), tags$br(),
+                           tags$a(href = "https://candidate.hr-manager.net/ApplicationInit.aspx?cid=388&ProjectId=175660&uiculture=en&MediaId=4181",
+                                  img(src = "hiring.png", height = 200)),
+                           tags$br(),
+                           tags$a(href = "https://candidate.hr-manager.net/ApplicationInit.aspx?cid=388&ProjectId=175660&uiculture=en&MediaId=4181",
+                                  "Reach Out to Us Through Our Recruitment Portal"),
+                           tags$br(), tags$br(), tags$br(),
+                           
+                           
+                           tags$strong(tags$em("Want to Learn More(!?)")),
+                           tags$br(), tags$br(),
+                           tags$a(href = "https://www.youtube.com/watch?v=Fo4Wq0tmkB0",
+                                  img(src = "meetup.png", height = 200)),
+                           tags$br(),
+                           tags$a(href = "https://www.youtube.com/watch?v=Fo4Wq0tmkB0",
+                                  "Watch our Meet-up \"Build Interactive {shiny} Apps to Share Your Work With Anyone!"),
+                           tags$br(), tags$br(), tags$br(),
+                           
+                           
+                           tags$strong(tags$em("About the App Authors:")),
+                           tags$br(), tags$br(),
+                           "Main Author", tags$strong("Andreas Botnen Smebye"), 
+                           "is a Scientific Programmer and Digital Product Owner working with Environmental Chemistry for more than ten years at NGI.",
+                           tags$br(), 
+                           "He is part of the team behind the innovation center", 
+                           tags$a(href = "https://www.nmbu.no/en/services/centers/earthresque/about", "earthresQue"),
+                           "to find new Innovative Mapping and Treatment Methods for Polluted Sites in a circular economy.",
+                           tags$br(),
+                           "He is particular interested in how to use digitalization as a tool to implement findings and methodology from R&D into",
+                           tags$a(href = "https://www.ngi.no/Prosjekter/Nye-verktoey-og-metoder-for-risikovurdering-og-tiltak-ved-skytebaner-med-Forsvarsbygg)", "New Practice."),
+                           
+                           tags$br(), tags$br(),
+                           "Co-Author", tags$strong("Erlend Briseid Storrøsten"), 
+                           "is a Mathematician who knows his Gausian distributions and never mistakes Correlation for Causation.",
+                           tags$br(), tags$br()
+                         )),
+                         
+                         align = "center"
+                       )
                      )
                    )
       )
       ),
-      div(column(12,em("NGI is not liable for any damages arising in contract, tort or otherwise from the use of or inability to use this site or any material contained in it, or from any action or decision taken as a result of using the site. This Web Page neither Stores nor Collects Personal Information"),
-                 align = "center")),
+      div(column(12,
+                 h6(em(tags$span("NGI is not liable for any damages arising in contract, tort or otherwise from the use of or inability to use this site or any material contained in it, or from any action or decision taken as a result of using the site.",
+                                 tags$br(),
+                                 "This Web Page neither Stores nor Collects Personal Information")
+                 ))),
+          align = "center"),
       br(),br()
     )
   )
 )
+
+
+
